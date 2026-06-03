@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Community Event Portal</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="GOOGLE_FONT_URL" rel="stylesheet">
+        <!-- Load jQuery CDN for jQuery Exercises (Task 14) -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            body{
+                background-color: rgba(32, 178, 170, 0.8);
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("img/ceb.jpg");
+                background-attachment: fixed;
+                background-position: center center;
+            }
+        </style>
+    </head>
+
+    <body onload="loadPreference()">
+        <!--Navigation-->
+        <nav class="navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="help.html" target="_blank">Help </a></li>
+            </ul>
+        </nav>
+
+        <!--Welcome banner-->
+        <div id="mainHeader">
+            <h1 style="color: red; text-shadow: 5px 5px 10px; font-size: 32px; text-transform: uppercase; letter-spacing: 2px;">Welcome My Family</h1>
+            <p>Known for a community. But we are a Family</p>
+        </div>
+
+        <!--Special offers-->
+        <h2 class="highlight">Special Offers</h2>
+        <div id="offers" class="background-styles">
+            <p>Participate in the upcoming events and won exiting prices like 
+                <span style="color:red; font-weight: bold;">Containers, household things, etc</span></p>
+        </div>
+
+        <!--Main-->
+        <main>
+            <section id="home">
+                <h2 class="highlight">Welcome</h2>
+                <div id =welcome class="background-styles">
+                    <p>This is the web page specially designed for our community to regulate events. 
+                        So now onwards all our community members can see the events and its details 
+                        through our portal. so we need proper interaction and coordination from you to make
+                        this initiative successful. <span class="highlight">Thank You!</span>
+                    </p>
+                </div>
+            </section>
+
+
+            <section id="events">
+                <!-- Search & Filter Controls (Exercise 8) -->
+                <div class="background-styles" style="margin-bottom: 20px;">
+                    <h3>Search & Filter Events</h3>
+                    <div style="margin: 10px 0; display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                        <div>
+                            <label for="search-input"><b>Search by Name:</b> </label>
+                            <input type="text" id="search-input" placeholder="Type name..." style="padding: 6px 10px; border-radius: 5px; border: 1px solid #ccc; width: 180px; color: black;">
+                        </div>
+                        <div>
+                            <label for="filter-category"><b>Category:</b> </label>
+                            <select id="filter-category" style="padding: 6px 10px; border-radius: 5px; border: 1px solid #ccc; color: black;">
+                                <option value="all">All Categories</option>
+                                <option value="Community">Community</option>
+                                <option value="Music">Music</option>
+                                <option value="Workshop">Workshop</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Spinner (Exercise 9) -->
+                <div id="loadingSpinner" style="display: none; text-align: center; font-weight: bold; color: yellow; padding: 20px;">
+                    Loading events...
+                </div>
+
+                <div id="eventContainer"></div>
+                <h2 class="highlight">List of upcoming events</h2>
+                <div id="eventCard" class="background-styles">
+                    <h3>Event : Opening Event</h3>
+                    <p>Date : 29.05.2026</p>
+                    <p>Time : 6.00 pm</p>
+                    <a href="#register">Register Event to Participate</a>
+                </div><br>
+                <div id="eventCard"  class="background-styles">
+                    <h3>Event : Budget discussion meeting</h3>
+                    <p>Date : 31.05.2026</p>
+                    <p>Time : 11.00 AM</p>
+                    <a href="#register">Register Event to Participate</a>
+                </div>
+            </section>
+
+
+            <section id="gallery">
+                <h2 class="highlight">Gallery</h2>
+                <div class="background-styles">
+                    <table>
+                        <tr>
+                            <td><figure><img id="eventImg" class="gallery-img" src="img/ce1.jpg" ondblclick="enlargeImage()" alt="Food Festival" title="Food Festival">
+                            <figcaption>The Food Festival event done on January 2025.</figcaption></figure></td>
+                            <td><figure><img class="gallery-img" src="img/ce2.png" ondblclick="enlargeImage()" alt="Fancy Dress" title="Fancy Dress Competition">
+                            <figcaption>The Fancy Dress Show done as a part of Christmas Celebration.</figcaption></figure></td>
+                            <td><figure><img class="gallery-img" src="img/ce3.jpg" ondblclick="enlargeImage()" alt="New year celebration" title="New year celebration">
+                            <figcaption>New Celebration for the year 2025.</figcaption></figure></td>
+                        </tr>
+                        <tr>
+                            <td><figure><img class="gallery-img" src="img/ce4.webp" ondblclick="enlargeImage()" alt="Volunteers" title="volunteers on New Year Celebration">
+                            <figcaption>The Special pic of Volunteers on new year celebration.</figcaption></figure></td>
+                            <td><figure><img class="gallery-img" src="img/ce5.jpg" ondblclick="enlargeImage()" alt="Music day" title="Music concert">
+                            <figcaption>Music concert organized by our community in March 2025.</figcaption></figure></td>
+                            <td><figure><img class="gallery-img" src="img/ce6.jpg" ondblclick="enlargeImage()" alt="Dance Festival" title="Dance Festival">
+                            <figcaption>Dance Festival celebrate in June 2025.</figcaption></figure></td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+
+            <section id="register">
+                <h2 class="highlight">Event Registration</h2>
+                <form id="form">
+                    <div class="form-elements">
+                        <label>Name : </label>
+                        <input type="text" name="name" id="name" placeholder="Enter Name" required autofocus><br>
+                    </div>
+                    <div class="form-elements">
+                        <label>Email : </label>
+                        <input type="email" name="email" id="email" placeholder="Enter Email" required><br>
+                    </div>
+                    <div class="form-elements">
+                        <label>Date : </label>
+                        <input type="date" name="date" id="date" required><br>
+                    </div>
+                    <div class="form-elements">
+                        <label>Phone Number : </label>
+                        <input type="tel" id="phone" onblur="validatePhone()">
+                        <p id="phoneMsg"></p>
+                    </div>
+                    <div class="form-elements">
+                        <label>Event : </label>
+                        <select id="event-type" name="event-type" onchange="showFee(); savePreference()" required>
+                            <option value="opening event">Opening Event</option>
+                            <option value="budget meeting">Budget Discussion Meeting</option>
+                        </select>
+                        <br>
+                        <p id="fee"></p>
+                    </div>
+                    <div class="form-elements">
+                        <label>Message : </label>
+                        <textarea id="message" name="message" placeholder="Your Comments" onkeyup="countChars()"></textarea><br>
+                        <p id="charCount">Characters: 0</p>
+                    </div>
+                    <input type="submit" id="registerBtn" value="submit">
+                    <output id="confirmation"></output>
+                </form>
+                <button onclick="clearPreferences()">Clear Preferences</button>
+            </section>
+
+
+            <section id="video">
+                <h2 class="highlight">Community Event Promo</h2>
+
+                <div id="video" class="background-styles">
+                    
+                    <video id="promoVideo" controls oncanplay="videoReady()">
+                        <source src="events.mp4" type="video/mp4">
+                    </video>
+
+                    <p id="videoMsg"></p>
+                </div>
+                
+            </section>
+            <section id="location">
+                <h2 class="highlight">Nearby Events</h2>
+                <div id="location" class="background-styles">
+                    
+                    <button onclick="findLocation()">
+                        Find Nearby Events
+                    </button>
+
+                    <p id="locationResult"></p>
+                </div>
+                
+            </section>
+
+            <section id="news">
+                <div class="background-styles">
+                    <h2 class="highlight">Community Bulletin</h2>
+
+                    <div class="newsArticle">
+                        Social & EntertainmentBlock Parties: Neighborhood barbecues with food, music, and games.
+                        Open Mic Nights: Local talent showcases for poetry, music, or comedy.
+                        Outdoor Movie Nights: Public film screenings in parks or on large exterior walls.
+                        Potlucks: Casual dinners where attendees bring homemade regional dishes.
+                        Health & WellnessFun Runs & Walkathons: 5K runs or charity walks for local causes.
+                        Group Fitness: Outdoor yoga, Zumba, or tai chi classes hosted in a community park.
+                        Community Sports Leagues: Friendly neighborhood softball, kickball, or soccer matches.
+                        Culture & EducationFood & Heritage Festivals: Celebrations featuring cultural cuisines, traditional dances, and historical storytelling.
+                        Art Walks & Makers Markets: Pop-up events spotlighting local creators, craftspeople, and artists.
+                        Educational Workshops: Classes where residents can learn to garden, cook, or code
+                    </div>
+                </div>
+                
+            </section>
+
+
+            <section id="contact">
+                <div id="contact" class="background-styles">
+                    <p class="highlight"><b>For any enquiries, contact us through the following ways</b></p>
+                    <p><b>Phone No.:</b><a href="tel:9042805421">9042805421</a></p>
+                    <p><b>Email : </b>commevents@gmail.com</p>
+                    <p><b>Address : </b>Nungambhakam, Chennai</p>
+                </div>
+            </section>
+        </main>
+        <p id="hiddenText">
+            Visibility Hidden Example
+        </p>
+        <p id="removedText">
+            Display None Example
+        </p>
+
+        <!--Footer-->
+        <footer>
+            <div id="footer" class="background-styles"><p><span class="highlight">Thank you for visiting the site.</span> We expect the proper coordination from you for our Community</p></div>
+        </footer>
+
+
+        <script>
+
+            function validatePhone() {
+                let phone = document.getElementById("phone").value;
+
+                if(phone.length != 10){
+                    document.getElementById("phoneMsg").textContent =
+                    "Invalid Phone Number";
+                }
+                else{
+                    document.getElementById("phoneMsg").textContent =
+                    "Valid Phone Number";
+                }
+            }
+
+            function showFee() {
+
+                let eventType =
+                document.getElementById("event-type").value;
+
+                if(eventType == "opening event"){
+                    document.getElementById("fee").textContent =
+                    "Fee: ₹100";
+                }
+                else{
+                    document.getElementById("fee").textContent =
+                    "Fee: Free";
+                }
+            }
+
+            function countChars() {
+
+                let count =
+                document.getElementById("message").value.length;
+
+                document.getElementById("charCount").textContent =
+                "Characters: " + count;
+            }
+
+            function showConfirmation() {
+
+                document.getElementById("confirmation").textContent =
+                "Registration Successful";
+            }
+
+            function enlargeImage() {
+
+                document.getElementById("eventImg").style.width =
+                "500px";
+
+                document.getElementById("eventImg").style.height =
+                "350px";
+            }
+
+            function videoReady() {
+                document.getElementById("videoMsg").textContent =
+                "Video ready to play";
+            }
+
+            window.onbeforeunload = function() {
+                return "You have unsaved changes";
+            };
+
+            function savePreference() {
+
+                let eventType =
+                document.getElementById("event-type").value;
+
+                localStorage.setItem(
+                    "preferredEvent",
+                    eventType
+                );
+            }
+
+            function loadPreference() {
+
+                let savedEvent =
+                localStorage.getItem("preferredEvent");
+
+                if(savedEvent){
+                    document.getElementById("event-type").value =
+                    savedEvent;
+                }
+            }
+
+            function clearPreferences() {
+
+                localStorage.clear();
+
+                sessionStorage.clear();
+
+                alert("Preferences Cleared");
+            }
+
+            function findLocation() {
+
+                navigator.geolocation.getCurrentPosition(
+                    showPosition,
+                    showError,
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000
+                    }
+                );
+            }
+
+            function showPosition(position) {
+
+                document.getElementById("locationResult").textContent =
+                "Latitude: " +
+                position.coords.latitude +
+                " Longitude: " +
+                position.coords.longitude;
+            }
+
+            function showError(error) {
+
+                if(error.code == 1){
+                    document.getElementById("locationResult").textContent =
+                    "Permission Denied";
+                }
+
+                else if(error.code == 3){
+                    document.getElementById("locationResult").textContent =
+                    "Request Timed Out";
+                }
+
+                else{
+                    document.getElementById("locationResult").textContent =
+                    "Location Unavailable";
+                }
+            }
+
+            console.log("Community Portal Loaded");
+            console.log("Registration Module Ready");
+            console.log("Gallery Module Ready");
+
+        </script>
+        <script src="main.js"></script>
+    </body>
+</html>

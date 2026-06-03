@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Opening Event",
+    "date": "2026-05-29",
+    "seats": 50,
+    "category": "Community",
+    "fee": 100
+  },
+  {
+    "name": "Budget Meeting",
+    "date": "2026-05-31",
+    "seats": 0,
+    "category": "Community",
+    "fee": 0
+  },
+  {
+    "name": "Music Concert",
+    "date": "2026-06-05",
+    "seats": 30,
+    "category": "Music",
+    "fee": 200
+  },
+  {
+    "name": "Dance Festival",
+    "date": "2026-06-12",
+    "seats": 25,
+    "category": "Music",
+    "fee": 150
+  },
+  {
+    "name": "Baking Workshop",
+    "date": "2026-06-20",
+    "seats": 15,
+    "category": "Workshop",
+    "fee": 50
+  }
+]

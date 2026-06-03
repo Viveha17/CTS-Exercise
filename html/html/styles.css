@@ -1,0 +1,149 @@
+/*margin and padding styles*/
+*{
+    margin: 0;
+    padding: 0;
+}
+/*welcome Banner Styles*/
+#mainHeader{
+    text-align: center;
+    background-color: blue;
+    color: yellow;
+    text-shadow: 5px 5px 10px red;
+}
+/*h2 styles element selector*/
+h2{
+    letter-spacing: 0.05em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.background-styles{
+    background-color: rgba(160, 140, 140, 0.75); 
+  
+  /* Blurs the image shapes directly behind the card layer */
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  
+  /* Text and spacing adjustments */
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 1000px;
+  margin: 10px;
+  
+  /* Adds depth over the background image */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+/*common style*/
+.highlight{
+    color: #FF0000;
+    font-style: italic;
+    font-weight: bold;
+}
+/*gallery image style*/
+.gallery-img{
+    border: 5px solid wheat;
+    height: 180px;
+    width: 280px;
+    border-radius: 50px;
+}
+/*navigation bar style*/
+.navigation{
+    text-align: right;
+}
+.navigation ul{
+    list-style-type: none;
+    list-style-position: inside;
+}
+.navigation li{
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+/*event card styles*/
+.eventCard{
+    border: 5px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+/*form style*/
+#form{
+    border: 2px solid red;
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgba(32, 178, 170, 0.8);
+}
+/*form elements style*/
+.form-elements{
+    font-weight: bold;
+    margin: 20px;
+}
+/*group selector*/
+h3, p, label{
+    line-height: 1.8;
+    font-family: Poppins, sans-serif;
+}
+/*link Styles*/
+a:link{
+    color: blue;
+}
+
+a:visited{
+    color: purple;
+}
+
+a:hover{
+    color: red;
+}
+
+a:active{
+    color: green;
+}
+table{
+    border-collapse: collapse; 
+    text-align: center;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    outline: 3px solid orange;
+}
+
+figcaption{
+    color: lightblue;
+    font-weight: bold;
+}
+
+#hiddenText{
+    visibility: hidden;
+}
+
+#removedText{
+    display: none;
+}
+
+.newsArticle{
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid gray;
+}
+
+@media screen and (max-width:768px){
+    .navigation li{
+        display:block;
+    }
+    .gallery-img{
+        width:150px;
+        height:100px;
+    }
+    h1{
+        font-size:24px;
+    }
+    #form{
+        width:80%;
+    }
+    body{
+        min-height:100vh;
+    }
+}
